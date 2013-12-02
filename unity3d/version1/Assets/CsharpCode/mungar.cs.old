@@ -1,0 +1,88 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Net.Sockets;
+using System.Net;
+public class mungar : MonoBehaviour {
+	private Socket S;
+ 	private int port=4800;
+	// Use this for initialization
+	void Start () {
+		port=4800;
+		connect ();
+	}
+	
+	// Update is called once per frame
+	void addforce(){
+		//Rigidbody rb = GetComponent<Rigidbody>();
+	}
+	void Update () {
+				int command=-1;
+				byte[] message = new byte[256];
+				byte[] buffer=new byte[1];
+				int offset=0;
+				if(S.Available>10){
+					        while(S.Available>0)
+							{ 	
+								int messagel =S.Receive(buffer); 
+ 								if( System.Convert.ToChar(buffer[0])=='\n')
+							 		break;
+								else
+									{	
+										message[offset]=buffer[0];
+										offset++;
+									}
+								
+							}
+						 
+
+				}
+			if(offset>0){
+					string result = System.Text.Encoding.UTF8.GetString(message,0,offset);
+					Debug.Log("command:"+result);	
+					command=0;
+					//parse command
+				}
+			switch(command)
+			{
+				case 0://jump-flying;
+				{
+			        Debug.Log("Jumping");
+			   /*
+           		 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+           		 moveDirection = transform.TransformDirection(moveDirection);
+           		 moveDirection *= speed;
+           		 if (Input.GetButton("Jump"))
+               		 moveDirection.y = jumpSpeed;
+            
+       
+        		moveDirection.y -= gravity * Time.deltaTime;
+      			controller.Move(moveDirection * Time.deltaTime);*/
+					   Debug.Log("direction:"+this.transform.forward);
+          			  //this.rigidbody.velocity = this.transform.forward*10;
+				}
+					break;
+				case 1:
+					break;
+		
+				default: break;
+			}
+				/* if (BitConverter.IsLittleEndian)
+    				Array.Reverse(bytes);
+
+				int i = BitConverter.ToInt32(bytes, 0);*/
+		
+	}
+	
+	void connect(){
+		 
+		 S = new System.Net.Sockets.Socket( System.Net.Sockets.AddressFamily.InterNetwork, 
+   		 System.Net.Sockets.SocketType.Stream, System.Net.Sockets.ProtocolType.Tcp);
+		 IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
+            IPAddress ipAddress = ipHostInfo.AddressList[0];
+            IPEndPoint remoteEP = new IPEndPoint(ipAddress,port);
+		  S.Connect(remoteEP);
+		 
+		Debug.Log("Socket connected to"+S.RemoteEndPoint.ToString());
+		 //s.Available;
+	}
+}

@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CsharpCode\firstperson.cs">
+    <Files>
+      <File FileName="Assets\CsharpCode\firstperson.cs" Line="193" Column="17" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" Line="61" Column="6" />
+      <File FileName="Assets\CsharpCode\cursor.cs" Line="6" Column="29" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" Line="494" Column="6" />
+      <File FileName="Assets\CsharpCode\terrain_initialize.cs" Line="8" Column="2" />
+      <File FileName="Assets\CsharpCode\mushroom_06.cs" Line="7" Column="22" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
